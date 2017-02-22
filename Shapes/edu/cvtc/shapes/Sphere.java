@@ -3,18 +3,18 @@
  */
 package edu.cvtc.shapes;
 
-import javax.swing.JOptionPane;
 
 /**
  * @author Nicholas
  *
  */
-public class Sphere extends Shape {
+public class Sphere extends Shape implements Renderer {
 // radius and pi conversion to float
 	private float radius = 0;
 	final float pi = (float)Math.PI;
 	// class constructor
-	public Sphere(float radius) {
+	public Sphere(Dialog messageBox,float radius) {
+		super(messageBox);
 		if (radius < 0){
 			throw new IllegalArgumentException("radius should not be negative");
 		}else{
@@ -47,8 +47,7 @@ public class Sphere extends Shape {
 	//render constructor for sphere
 	@Override
 	public void render() {
-		
-		JOptionPane.showMessageDialog(null, "This Cylinders dimensions are a radius of " + radius + " and a surface area of " + surfaceArea() + " and a volume of " + volume());
+		super.getMessageBox().show("This Cylinders dimensions are a radius of " + radius + " and a surface area of " + surfaceArea() + " and a volume of " + volume(), "Sphere");
 	}
 
 }

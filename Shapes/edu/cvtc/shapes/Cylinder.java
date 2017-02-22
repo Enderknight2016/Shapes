@@ -3,19 +3,19 @@
  */
 package edu.cvtc.shapes;
 
-import javax.swing.JOptionPane;
 
 /**
  * @author Nicholas
  *
  */
-public class Cylinder extends Shape {
+public class Cylinder extends Shape implements Renderer{
 // height, radius, and pi converted to float
 	private float height = 0;
 	private float radius = 0;
 	final float pi = (float)Math.PI;
 	// class constructor
-	public Cylinder(float height, float radius) {
+	public Cylinder(Dialog messageBox, float height, float radius) {
+		super(messageBox);
 		if (height < 0 || radius < 0){
 			throw new IllegalArgumentException("Parameter cannot be negative");
 		} else {
@@ -54,15 +54,14 @@ public class Cylinder extends Shape {
 	// volume constructor
 	@Override
 	public float volume() {
-		float volume = 2 * pi * radius * radius * height;
+		float volume = pi * radius * radius * height;
 			return volume;
 		
 	}
 	// render constructor for cylinder
 	@Override
 	public void render() {
-		
-		JOptionPane.showMessageDialog(null, "This Cylinders dimensions are a radius of " + radius + " and a height of " + height + " and a surface area of " + surfaceArea() + " and a volume of " + volume());
+		super.getMessageBox().show("This Cylinders dimensions are a radius of " + radius + " and a height of " + height + " and a surface area of " + surfaceArea() + " and a volume of " + volume(), "Cylinder");
 	}
 
 }

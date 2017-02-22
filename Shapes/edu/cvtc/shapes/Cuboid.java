@@ -1,26 +1,29 @@
 package edu.cvtc.shapes;
 
-import javax.swing.JOptionPane;
+
 
 /**
  * @author Nicholas
  *
  */
-public class Cuboid extends Shape {
+public class Cuboid extends Shape implements Renderer {
 	// properties
 	private float width = 0;
 	private float height = 0;
 	private float depth = 0;
 	//class constructor
-	public Cuboid(float width, float height, float depth) {
+	public Cuboid(Dialog messageBox, float width, float height, float depth ) {
+		super(messageBox);
 		if (width < 0 || height < 0 || depth < 0){
 			throw new IllegalArgumentException("parameters cannot be negative.");
 			
 		}else{
+			
 			this.width = width;
 			this.height = height;
 			this.depth = depth;
 		}
+		
 	}
 	// getters and setters
 	public float getWidth(){
@@ -69,11 +72,7 @@ public class Cuboid extends Shape {
 	//render constructor for Cuboid
 	@Override
 	public void render() {
-		if(volume() < 0 || surfaceArea() < 0){
-			JOptionPane.showMessageDialog(null,"Negative Numbers have been detected please try again");
-		}else{
-			JOptionPane.showMessageDialog(null, "This Cuboids dimensions are a width of " + width + " and a height of " + height + " and a depth of " + depth + " and a surface area of " + surfaceArea() + " and a volume of " + volume());
-		}
+		super.getMessageBox().show("This Cuboids dimensions are a width of " + width + " and a height of " + height + " and a depth of " + depth + " and a surface area of " + surfaceArea() + " and a volume of " + volume(), "Cuboid");
 	}
 
 }

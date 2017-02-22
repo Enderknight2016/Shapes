@@ -1,6 +1,8 @@
 package edu.cvtc.ShapesUnitTests;
 
 import static org.junit.Assert.*;
+
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -9,6 +11,7 @@ import junitparams.Parameters;
 
 
 import edu.cvtc.shapes.Cuboid;
+import edu.cvtc.shapes.Dialog;
 @RunWith(JUnitParamsRunner.class)
 public class CuboidUnitTests {
 
@@ -18,7 +21,7 @@ public class CuboidUnitTests {
 	@Test
 	@Parameters({ "2,4,5", "5,7,9", "7,8,10" })
 	public void testSurfaceArea(float x, float y, float z) {
-		Cuboid cuboid = new Cuboid(x, y, z);
+		Cuboid cuboid = new Cuboid(null,x, y, z);
 		float expected = 2 * x * y + 2 * y * z + 2 * z * x;
 		float actual = cuboid.surfaceArea();
 		assertEquals(expected, actual, 1e-8);
@@ -30,7 +33,7 @@ public class CuboidUnitTests {
 	@Test
 	@Parameters({ "2,4,5", "5,8,9", "7,8,10" })
 	public void testVolume(float x, float y, float z) {
-		Cuboid cuboid = new Cuboid(x, y, z);
+		Cuboid cuboid = new Cuboid(null,x, y, z);
 		float expected = x * y * z;
 		float actual = cuboid.volume();
 		assertEquals(expected, actual, 1e-8);
@@ -43,7 +46,7 @@ public class CuboidUnitTests {
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void testCuboid_IllegalArgument() {
-		new Cuboid(-1, 3, 6);
+		new Cuboid(null,-1, 3, 6);
 	}
 
 	/**
@@ -51,7 +54,8 @@ public class CuboidUnitTests {
 	 */
 	@Test
 	public void testGetWidth() {
-		Cuboid cuboid = new Cuboid(1, 1, 1);
+		Dialog messageBox = new MessageBoxSub();
+		Cuboid cuboid = new Cuboid(messageBox,1, 1, 1);
 		float expected = 1;
 		float actual = cuboid.getWidth();
 		assertEquals(expected, actual, 1e-8);
@@ -62,7 +66,8 @@ public class CuboidUnitTests {
 	 */
 	@Test
 	public void testGetHeight() {
-		Cuboid cuboid = new Cuboid(1, 1, 1);
+		Dialog messageBox = new MessageBoxSub();
+		Cuboid cuboid = new Cuboid(messageBox,1, 1, 1);
 		float expected = 1;
 		float actual = cuboid.getHeight();
 		assertEquals(expected, actual, 1e-8);
@@ -73,10 +78,20 @@ public class CuboidUnitTests {
 	 */
 	@Test
 	public void testGetDepth() {
-		Cuboid cuboid = new Cuboid(1, 1, 1);
+		Dialog messageBox = new MessageBoxSub();
+		Cuboid cuboid = new Cuboid(messageBox,1, 1, 1);
 		float expected = 1;
 		float actual = cuboid.getDepth();
 		assertEquals(expected, actual, 1e-8);
+	}
+	// I could not test render but I could test what render does
+	@Test
+	public void testRender() {
+		Dialog messageBox = new MessageBoxSub();
+		Cuboid cuboid = new Cuboid(messageBox, 2,3,7);
+		int expected = 0;
+		int actual = cuboid.getMessageBox().show("example", "example");
+		assertEquals(expected,actual);
 	}
 
 }

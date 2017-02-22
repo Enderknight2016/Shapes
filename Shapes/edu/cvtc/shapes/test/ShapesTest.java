@@ -18,9 +18,9 @@ public class ShapesTest {
 	 */
 	public static void main(String[] args) {
 		//Test shapes
-		Cuboid testCuboid = new Cuboid(15,35, 6);
-		Cylinder testCylinder = new Cylinder(6,19);
-		Sphere testSphere = new Sphere(9);
+		Cuboid testCuboid = new Cuboid(null, 15,35, 6);
+		Cylinder testCylinder = new Cylinder(null, 6,19);
+		Sphere testSphere = new Sphere(null, 9);
 		// rendering of test shapes to message boxes
 		testCuboid.render();
 		testCylinder.render();
