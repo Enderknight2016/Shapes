@@ -54,9 +54,7 @@ public class SpheresUnitTests {
 	public void testRender() {
 		Dialog messageBox = new MessageBoxSub();
 		Sphere sphere = new Sphere(messageBox,7);
-		int expected = 0;
-		int actual = sphere.getMessageBox().show("example", "example");
-		assertEquals(expected,actual);
+		sphere.render();
 	}
 
 }

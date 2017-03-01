@@ -9,7 +9,7 @@ package edu.cvtc.shapes;
  * @author Nicholas
  *
  */
-abstract public class Shape {
+abstract public class Shape  {
 	private Dialog messageBox;
 	// The abstract surface area of the super class
 	public abstract float surfaceArea();

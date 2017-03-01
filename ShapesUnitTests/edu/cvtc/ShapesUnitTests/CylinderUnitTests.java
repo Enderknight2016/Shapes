@@ -54,9 +54,7 @@ public class CylinderUnitTests {
 	public void testRender() {
 		Dialog messageBox = new MessageBoxSub();
 		Cylinder cylinder = new Cylinder(messageBox, 3,7);
-		int expected = 0;
-		int actual = cylinder.getMessageBox().show("example", "example");
-		assertEquals(expected,actual);
+		cylinder.render();
 	}
 
 }

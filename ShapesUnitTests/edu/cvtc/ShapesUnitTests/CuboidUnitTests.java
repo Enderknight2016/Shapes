@@ -89,9 +89,7 @@ public class CuboidUnitTests {
 	public void testRender() {
 		Dialog messageBox = new MessageBoxSub();
 		Cuboid cuboid = new Cuboid(messageBox, 2,3,7);
-		int expected = 0;
-		int actual = cuboid.getMessageBox().show("example", "example");
-		assertEquals(expected,actual);
+		cuboid.render();
 	}
 
 }
